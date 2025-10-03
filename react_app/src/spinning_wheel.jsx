@@ -3,14 +3,14 @@ import { Settings, Plus, Trash2, Play } from 'lucide-react';
 
 export default function LuckyWheel() {
   const [segments, setSegments] = useState([
-    { text: 'تدريب', color: '#000000ff', textColor: '#FFFFFFFF' },
-    { text: 'Prize 2', color: '#4ECDC4', textColor: '#FFFFFFFF' },
-    { text: 'Prize 3', color: '#FFE66D', textColor: '#000000ff' },
-    { text: 'Prize 4', color: '#95E1D3', textColor: '#000000ff' },
-    { text: 'Prize 5', color: '#F38181', textColor: '#000000ff' },
-    { text: 'Prize 6', color: '#AA96DA', textColor: '#000000ff' },
-    { text: 'Prize 7', color: '#FCBAD3', textColor: '#000000ff' },
-    { text: 'Prize 8', color: '#A8E6CF', textColor: '#000000ff' }
+    { text: 'خصم 20% علي تدريب', color: '#FFFFFF', textColor: '#000000' },
+    { text: 'خصم 30% علي تدريب', color: '#000000', textColor: '#FFFFFF' },
+    { text: 'خصم 40% علي تدريب', color: '#FFFFFF', textColor: '#000000' },
+    { text: 'خصم 50% علي تدريب', color: '#000000', textColor: '#FFFFFF' },
+    { text: 'خصم 60% علي تدريب', color: '#FFFFFF', textColor: '#000000' },
+    { text: 'خصم 70% علي تدريب', color: '#000000', textColor: '#FFFFFF' },
+    { text: 'خصم 80% علي تدريب', color: '#FFFFFF', textColor: '#000000' },
+    { text: 'خصم 90% علي تدريب', color: '#000000', textColor: '#FFFFFF' }
   ]);
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
@@ -160,9 +160,9 @@ export default function LuckyWheel() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 p-8">
+    <div className="min-h-screen p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-bold text-white text-center mb-2">Lucky Wheel</h1>
+        <h1 className="text-5xl font-bold text-white text-center mb-2">Al hefzy Lucky Wheel</h1>
         <p className="text-white text-center mb-8 opacity-90">Spin to win!</p>
         
         <div className="bg-white rounded-3xl shadow-2xl p-8 mb-6">
@@ -170,8 +170,8 @@ export default function LuckyWheel() {
             <div className="relative inline-block">
               <canvas 
                 ref={canvasRef} 
-                width={400} 
-                height={400}
+                width={600} 
+                height={600}
                 className="drop-shadow-2xl"
               />
               {/* Triangle pointer at the bottom - pointing UP into the wheel */}
@@ -196,7 +196,7 @@ export default function LuckyWheel() {
             <button
               onClick={spinWheel}
               disabled={spinning}
-              className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="bg-black text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               <Play size={24} />
               {spinning ? 'Spinning...' : 'Spin Wheel'}
@@ -212,7 +212,7 @@ export default function LuckyWheel() {
           
           {winner && (
             <div className="text-center">
-              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-2xl inline-block shadow-lg animate-pulse">
+              <div className="bg-black text-white px-8 py-4 rounded-2xl inline-block shadow-lg">
                 <p className="text-sm font-semibold mb-1">Winner!</p>
                 <p className="text-3xl font-bold">{winner}</p>
               </div>
@@ -261,10 +261,6 @@ export default function LuckyWheel() {
             </div>
           </div>
         )}
-        
-        <div className="text-center mt-8 text-white opacity-75 text-sm">
-          <p>Free & Open Source • Customize segments and colors • No limits!</p>
-        </div>
       </div>
     </div>
   );
