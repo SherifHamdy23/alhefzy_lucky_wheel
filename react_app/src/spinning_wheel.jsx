@@ -3,14 +3,14 @@ import { Settings, Plus, Trash2, Play } from 'lucide-react';
 
 export default function LuckyWheel() {
   const [segments, setSegments] = useState([
-    { text: 'Prize 1', color: '#FF6B6B' },
-    { text: 'Prize 2', color: '#4ECDC4' },
-    { text: 'Prize 3', color: '#FFE66D' },
-    { text: 'Prize 4', color: '#95E1D3' },
-    { text: 'Prize 5', color: '#F38181' },
-    { text: 'Prize 6', color: '#AA96DA' },
-    { text: 'Prize 7', color: '#FCBAD3' },
-    { text: 'Prize 8', color: '#A8E6CF' }
+    { text: 'تدريب', color: '#000000ff', textColor: '#FFFFFFFF' },
+    { text: 'Prize 2', color: '#4ECDC4', textColor: '#FFFFFFFF' },
+    { text: 'Prize 3', color: '#FFE66D', textColor: '#000000ff' },
+    { text: 'Prize 4', color: '#95E1D3', textColor: '#000000ff' },
+    { text: 'Prize 5', color: '#F38181', textColor: '#000000ff' },
+    { text: 'Prize 6', color: '#AA96DA', textColor: '#000000ff' },
+    { text: 'Prize 7', color: '#FCBAD3', textColor: '#000000ff' },
+    { text: 'Prize 8', color: '#A8E6CF', textColor: '#000000ff' }
   ]);
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
@@ -51,7 +51,7 @@ export default function LuckyWheel() {
       ctx.translate(centerX, centerY);
       ctx.rotate(startAngle + segmentAngle / 2);
       ctx.textAlign = 'center';
-      ctx.fillStyle = '#000';
+      ctx.fillStyle = segment.textColor || '#000';
       ctx.font = 'bold 16px Arial';
       ctx.fillText(segment.text, radius * 0.65, 5);
       ctx.restore();
@@ -140,7 +140,7 @@ export default function LuckyWheel() {
   };
 
   const addSegment = () => {
-    const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181', '#AA96DA', '#FCBAD3', '#A8E6CF'];
+    const colors = ['#2f0404ff', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181', '#AA96DA', '#FCBAD3', '#A8E6CF'];
     setSegments([...segments, { 
       text: `Prize ${segments.length + 1}`, 
       color: colors[segments.length % colors.length] 
@@ -185,8 +185,8 @@ export default function LuckyWheel() {
               >
                 {/* Smaller triangle */}
                 <svg width="40" height="35" className="drop-shadow-lg">
-                  <polygon points="20,0 40,35 0,35" fill="#FCD34D" stroke="#F59E0B" strokeWidth="2"/>
-                  <polygon points="20,3 35,30 5,30" fill="#EF4444"/>
+                  <polygon points="20,0 40,35 0,35" fill="#ffe100ff" stroke="#ffa200ff" strokeWidth="2"/>
+                  <polygon points="20,3 35,30 5,30" fill="#ffa200ff"/>
                 </svg>
               </div>
             </div>
@@ -202,12 +202,12 @@ export default function LuckyWheel() {
               {spinning ? 'Spinning...' : 'Spin Wheel'}
             </button>
             
-            <button
+            {/* <button
               onClick={() => setShowSettings(!showSettings)}
               className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center gap-2"
             >
               <Settings size={24} />
-            </button>
+            </button> */}
           </div>
           
           {winner && (
